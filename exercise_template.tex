@@ -1,0 +1,87 @@
+\documentclass[11pt,a4paper]{article}
+
+% ==== BASIC LAYOUT (minimal packages) ====
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb} % basic math
+\usepackage{graphicx}        % images/figures
+
+% ==== METADATA COMMANDS ====
+\newcommand{\studentname}{Alireza Khoeini}
+\newcommand{\studentid}{0093175}
+\newcommand{\course}{}
+\newcommand{\term}{}
+\newcommand{\assignmenttitle}{}
+\newcommand{\duedate}{}
+
+% ==== FORMAL ASSIGNMENT HEADER ====
+\newcommand{\assignmentheader}{%
+	\begin{center}
+		{\Large\textbf{\assignmenttitle}}\\[4pt]
+		{\normalsize \course\ \ (\term)}\\[4pt]
+		{\normalsize \studentname\ (\studentid)}\\[2pt]
+		{\normalsize \duedate}
+	\end{center}
+	\vspace{1em}\hrule\vspace{2em}
+}
+
+% ==== EXERCISE / SOLUTION STRUCTURE ====
+\newcounter{exercise}
+
+% Problem heading (you can optionally put the problem text after it)
+\newenvironment{exercise}[1][]{
+	\refstepcounter{exercise}%
+	\par\noindent\textbf{Problem \theexercise. #1}\par\smallskip
+}{\par\medskip}
+
+% You said you will only write the solutions
+\newenvironment{solution}{
+	\par\noindent\textbf{Solution. }\ignorespaces
+}{\par\medskip}
+
+% ==== MACROS FOR IMAGES & "GRAPHS" (PLOTS) ====
+% General figure macro
+% Usage: \insfig[width]{filename}{Caption text}{label-name}
+% Example: \insfig[0.6\textwidth]{myplot}{Sample plot}{sample-plot}
+\newcommand{\insfig}[4][0.8\textwidth]{%
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=#1]{#2}
+		\caption{#3}
+		\label{fig:#4}
+	\end{figure}
+}
+
+% Alias specifically for graphs/plots (same as image, different default width)
+% Usage: \insgraph{filename}{Caption text}{label-name}
+\newcommand{\insgraph}[3]{%
+	\insfig[0.7\textwidth]{#1}{#2}{#3}%
+}
+
+% ============================================
+\begin{document}
+	
+	\assignmentheader
+	
+	% ===== EXAMPLE USAGE =====
+	
+	\begin{exercise}
+		% (Optionally copy the problem statement here, or leave it blank)
+	\end{exercise}
+	
+	\begin{solution}
+		Here you write your solution for Problem~\theexercise.
+		You can use normal math, e.g. \( a^2 + b^2 = c^2 \).
+	\end{solution}
+	
+	\begin{exercise}
+		Another problem...
+	\end{exercise}
+	
+	\begin{solution}
+		Another solution...
+		% Example image/graph:
+		\insfig[0.3\textwidth]{TF_graph.png}{This is an example image.}{example-image}
+		% \insgraph{mygraph}{This is an example graph.}{example-graph}
+	\end{solution}
+	
+\end{document}
