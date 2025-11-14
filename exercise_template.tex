@@ -4,6 +4,7 @@
 \usepackage[margin=2.5cm]{geometry}
 \usepackage{amsmath,amssymb} % basic math
 \usepackage{graphicx}        % images/figures
+\usepackage{svg} 
 
 % ==== METADATA COMMANDS ====
 \newcommand{\studentname}{Alireza Khoeini}
@@ -56,6 +57,17 @@
 \newcommand{\insgraph}[3]{%
 	\insfig[0.7\textwidth]{#1}{#2}{#3}%
 }
+% SVG figure macro
+% Usage: \inssvg[width]{filename-without-ext}{Caption text}{label-name}
+% Example: \inssvg[0.7\textwidth]{diagram}{An SVG diagram}{svg-diagram}
+\newcommand{\inssvg}[4][0.8\textwidth]{%
+	\begin{figure}[h]
+		\centering
+		\includesvg[width=#1,inkscapelatex=false]{#2}
+		\caption{#3}
+		\label{fig:#4}
+	\end{figure}
+}
 
 % ============================================
 \begin{document}
@@ -82,6 +94,8 @@
 		% Example image/graph:
 		\insfig[0.3\textwidth]{TF_graph.png}{This is an example image.}{example-image}
 		% \insgraph{mygraph}{This is an example graph.}{example-graph}
+		% Example SVG:
+		\inssvg[0.4\textwidth]{ERD.svg}{This is an example SVG figure.}{example-svg}
 	\end{solution}
 	
 \end{document}
